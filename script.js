@@ -4,8 +4,6 @@ const cardsContainer = document.getElementById("cardsContainer");
 const searchInput = document.getElementById("search");
 let products = items.slice(0,15)
  
-let newpro = products.slice(0,2)
-console.log(newpro)
 const categoryCheckboxes = [
   document.getElementById("hoodie"),
   document.getElementById("kurta"),
@@ -59,17 +57,14 @@ function applyFilters() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
   renderCards(products);
-
 
   categoryCheckboxes.forEach(cb => cb.addEventListener("change", applyFilters));
   searchInput.addEventListener("input", applyFilters);
 
-
   const menuToggle = document.getElementById("menuToggle");
   const menuContent = document.getElementById("menuContent");
-
+  
   if (menuToggle && menuContent) {
     menuToggle.addEventListener("click", () => {
       menuContent.classList.toggle("hidden");
