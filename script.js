@@ -2,7 +2,7 @@ import items from "./data/product.js";
 
 const cardsContainer = document.getElementById("cardsContainer");
 const searchInput = document.getElementById("search");
-let products = items.slice(0,15)
+let products = items
  
 const categoryCheckboxes = [
   document.getElementById("hoodie"),
@@ -12,6 +12,22 @@ const categoryCheckboxes = [
   document.getElementById("pant")
 ];
 
+
+
+const cardsPerPage = 4;
+let currentPage = 1;
+
+function displayProducts(productList) {
+
+  const start = (currentPage - 1) * cardsPerPage;
+  const end = start + cardsPerPage;
+
+  const paginatedProducts = productList.slice(start, end);
+
+  renderCards(paginatedProducts);
+
+  renderPagination(productList);
+}
 
 function renderCards(productList) {
   cardsContainer.innerHTML = "";
@@ -64,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const menuToggle = document.getElementById("menuToggle");
   const menuContent = document.getElementById("menuContent");
-  
+
   if (menuToggle && menuContent) {
     menuToggle.addEventListener("click", () => {
       menuContent.classList.toggle("hidden");
