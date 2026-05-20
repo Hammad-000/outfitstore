@@ -55,7 +55,7 @@ function renderCards(productList) {
         </p>
 
         <p class="font-semibold text-indigo-600 mb-1">
-          Price: $${product.price}
+          Price: Rs ${product.price}
         </p>
 
         <p class="text-yellow-500 mb-3">
