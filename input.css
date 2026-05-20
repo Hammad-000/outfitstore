@@ -1,2 +1,57 @@
 @import "tailwindcss";
 
+
+  * {
+    transition: all 0.3s ease;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.4),
+      0 0 20px rgba(99,102,241,0.4);
+  }
+
+  .glow:hover {
+    box-shadow:
+      0 0 15px rgba(34,211,238,0.6),
+      0 0 40px rgba(99,102,241,0.5);
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right,#22d3ee,#818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  .glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.4),
+      0 0 20px rgba(99,102,241,0.4);
+  }
+
+  .glow:hover {
+    box-shadow:
+      0 0 15px rgba(34,211,238,0.6),
+      0 0 40px rgba(99,102,241,0.5);
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right,#22d3ee,#818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
