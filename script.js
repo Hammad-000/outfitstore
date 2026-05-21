@@ -3,18 +3,6 @@ import items from "./data/product.js";
 const cardsContainer = document.getElementById("cardsContainer");
 const searchInput = document.getElementById("search");
 
- 
-let high = items.forEach(element => {
-  let value =  element.price 
-  console.log(value)
-})
-
-
-
-
-
-
-
 const categoryCheckboxes = [
   document.getElementById("hoodie"),
   document.getElementById("kurta"),
@@ -28,11 +16,6 @@ const page1Btn = document.querySelector(".btn-2");
 const page2Btn = document.querySelector(".btn-3");
 const page3Btn = document.querySelector(".btn-4");
 const nextBtn = document.querySelector(".btn-next");
-
-
-
-
-const rangefilter = document.querySelector(".cardsContainer") 
 
 const cardsPerPage = 4;
 let currentPage = 1;
