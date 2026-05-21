@@ -17,6 +17,21 @@ const page2Btn = document.querySelector(".btn-3");
 const page3Btn = document.querySelector(".btn-4");
 const nextBtn = document.querySelector(".btn-next");
 
+let newitems = [...items]
+
+
+ let prices = newitems.map(e => e.price);
+
+  let lowToHigh = [...prices].sort((a, b)=> a - b)
+ let highTolow = [...prices].sort((a, b)=> b - a)
+ 
+
+ console.log(lowToHigh)
+ console.log(highTolow)
+
+
+
+
 const cardsPerPage = 4;
 let currentPage = 1;
 
