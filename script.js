@@ -72,11 +72,13 @@ function renderCards(productList) {
         <p class="font-semibold text-indigo-600 mb-1">
           Price: Rs ${product.price}
         </p>
-
+          
         <p class="text-yellow-500 mb-3">
           ${"★".repeat(product.rating)}
           ${"☆".repeat(5 - product.rating)}
         </p>
+          <button class="bg-indigo-600 p-2 rounded-2xl" >Add to Card</button>
+
       </div>
     `;
 
