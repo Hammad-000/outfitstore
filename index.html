@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clothes Store</title>
+  <title>Outfit Store</title>
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -18,173 +19,285 @@
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-900 min-h-screen text-white">
+<body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-900 min-h-screen text-white antialiased">
 
   <!-- NAVBAR -->
-  <nav class="sticky top-0 z-50 backdrop-blur-2xl bg-white/5 border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)]">
+  <nav class="sticky top-0 z-40 backdrop-blur-2xl bg-white/5 border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)]">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4">
 
       <!-- Logo -->
-      <h1
-        class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent tracking-wide">
+      <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent tracking-wide">
         Outfit 🛍️
       </h1>
 
-      <!-- Mobile Button -->
-      <button id="menuToggle"
-        class="md:hidden text-3xl text-white hover:text-cyan-300 transition duration-300">
-        ☰
-      </button>
+      <!-- Mobile & Cart Toggles -->
+      <div class="flex items-center gap-4 md:order-3">
+        <!-- Interactive Cart Trigger Button -->
+        <button id="openCart" class="relative p-2.5 bg-white/10 hover:bg-white/20 rounded-xl transition cursor-pointer flex items-center justify-center border border-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-cyan-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+          </svg>
+          <span id="cartCountBadge" class="absolute -top-1.5 -right-1.5 bg-cyan-500 text-slate-950 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">
+            2
+          </span>
+        </button>
+
+        <button id="menuToggle" class="md:hidden text-3xl text-white hover:text-cyan-300 transition duration-300">
+          ☰
+        </button>
+      </div>
 
       <!-- Menu -->
-      <div id="menuContent"
-        class="hidden md:flex flex-col md:flex-row md:items-center gap-5 w-full md:w-auto mt-4 md:mt-0">
+      <div id="menuContent" class="hidden md:flex flex-col md:flex-row md:items-center gap-5 w-full md:w-auto mt-4 md:mt-0">
 
         <!-- Filters -->
         <div class="flex flex-wrap items-center gap-4">
-
-          <label
-            class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
+          <label class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
             <input type="checkbox" id="hoodie" class="accent-cyan-400 scale-110">
             <span>Hoodie</span>
           </label>
 
-          <label
-            class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
+          <label class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
             <input type="checkbox" id="kurta" class="accent-cyan-400 scale-110">
             <span>Kurta</span>
           </label>
 
-          <label
-            class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
+          <label class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
             <input type="checkbox" id="perfume" class="accent-cyan-400 scale-110">
             <span>Perfume</span>
           </label>
 
-          <label
-            class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
+          <label class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
             <input type="checkbox" id="shirt" class="accent-cyan-400 scale-110">
             <span>Shirt</span>
           </label>
 
-          <label
-            class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
+          <label class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition cursor-pointer">
             <input type="checkbox" id="pant" class="accent-cyan-400 scale-110">
             <span>Pants</span>
           </label>
         </div>
 
         <!-- Search -->
-        <div
-          class="flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-2 w-full md:w-72 shadow-md">
-
-          <input type="search" id="search" placeholder="Search products..."
-            class="bg-transparent outline-none w-full placeholder:text-gray-300 text-white">
-
+        <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-2 w-full md:w-72 shadow-md">
+          <input type="search" id="search" placeholder="Search products..." class="bg-transparent outline-none w-full placeholder:text-gray-300 text-white">
           <span class="text-gray-300 text-lg">🔍</span>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- MAIN -->
+  <!-- MAIN CONTENT CONTAINER -->
   <main class="max-w-7xl mx-auto px-6 py-10">
 
     <!-- Heading -->
     <div class="mb-10">
       <h2 class="text-5xl font-bold mb-3">
         👋 Welcome to
-        <span
-          class="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+        <span class="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
           Outfit Store
         </span>
       </h2>
-
       <p class="text-gray-300 text-lg">
         Explore premium fashion collections with modern styles.
-      </p>  
+      </p>
     </div>
 
-    <!-- Cards -->
-    <div id="cardsContainer"
-      class="grid grid-row-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-
+    <!-- Product Cards Grid Container -->
+    <div id="cardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <!-- Cards will be dynamically injected here via your script.js -->
     </div>
 
-<div class="flex items-center justify-center gap-3 p-6">
+    <!-- Pagination -->
+    <div class="flex items-center justify-center gap-3 p-6 mt-10">
+      <button class="btn-1 flex items-center justify-center w-11 h-11 rounded-full bg-white/10 border border-white/10 text-white hover:bg-white/20 hover:scale-105 transition-all duration-200 cursor-pointer">
+        <span class="text-xl font-bold">‹</span>
+      </button>
 
-  <button
-    class=" btn-1 flex items-center justify-center w-11 h-11 rounded-full 
-           bg-white shadow-md border border-gray-200
-           text-gray-700 hover:bg-gray-100 hover:scale-105
-           transition-all duration-200 cursor-pointer "
-  >
-    <span class="text-xl font-bold ">‹</span>
-  </button>
-  
+      <button class="btn-2 w-11 h-11 rounded-full bg-cyan-500 text-slate-950 font-bold shadow-lg shadow-cyan-500/20 hover:bg-cyan-400 transition-all duration-200 cursor-pointer">
+        1
+      </button>
 
-  <button
-    class=" btn-2 w-11 h-11 rounded-full bg-indigo-600 text-white
-           font-semibold shadow-lg hover:bg-indigo-700
-           transition-all duration-200 cursor-pointer"
-  >
-    1
-  </button>
+      <button class="btn-3 w-11 h-11 rounded-full bg-white/10 text-white border border-white/10 hover:bg-white/20 transition-all duration-200 cursor-pointer">
+        2
+      </button>
 
-  <button
-    class=" btn-3 w-11 h-11 rounded-full bg-white text-gray-700
-           border border-gray-200 shadow-md
-           hover:bg-gray-100 transition-all duration-200 cursor-pointer "
-  >
-    2
-  </button>
+      <button class="btn-4 w-11 h-11 rounded-full bg-white/10 text-white border border-white/10 hover:bg-white/20 transition-all duration-200 cursor-pointer">
+        3
+      </button>
 
-  <button
-    class=" btn-4 w-11 h-11 rounded-full bg-white text-gray-700
-           border border-gray-200 shadow-md
-           hover:bg-gray-100 transition-all duration-200 cursor-pointer "
-  >
-    3
-  </button>
-
-<button
-  class="btn-next flex items-center justify-center w-11 h-11 rounded-full 
-         bg-white shadow-md border border-gray-200
-         text-gray-700 hover:bg-gray-100 hover:scale-105
-         transition-all duration-200 cursor-pointer "
->
-  <span class="text-xl font-bold cursor-pointer ">›</span>
-</button>
-
-</div>
+      <button class="btn-next flex items-center justify-center w-11 h-11 rounded-full bg-white/10 border border-white/10 text-white hover:bg-white/20 hover:scale-105 transition-all duration-200 cursor-pointer">
+        <span class="text-xl font-bold">›</span>
+      </button>
+    </div>
   </main>
 
-  <footer class="bg-white/5 backdrop-blur-2xl border-t border-white/10 mt-10">
-  <div class="max-w-7xl mx-auto px-6 py-12 text-center text-gray-300">
+  <!-- CART DRAWERSIDEBAR (Hidden by default via 'invisible') -->
+  <div id="cartDrawer" class="invisible relative z-50 transition-all duration-300" role="dialog" aria-modal="true">
+    <!-- Backdrop Blur Overlay -->
+    <div id="cartOverlay" class="fixed inset-0 bg-slate-950/0 transition-all duration-300 backdrop-blur-none"></div>
 
-    <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-      Outfit Store
-    </h3>
+    <!-- Sidebar Wrapper -->
+    <div class="fixed inset-y-0 right-0 flex max-w-full">
+      <div id="cartPanel" class="w-screen max-w-md translate-x-full transform bg-slate-900 border-l border-white/10 shadow-2xl transition-transform duration-300 ease-in-out flex flex-col h-full text-white">
+        
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between border-b border-white/10 px-6 py-5 bg-white/5">
+          <h2 class="text-xl font-bold flex items-center gap-2">
+            Your Cart 
+            <span class="rounded-full bg-cyan-500/20 px-2.5 py-0.5 text-xs font-semibold text-cyan-400 border border-cyan-500/30">2 Items</span>
+          </h2>
+          <button id="closeCart" class="rounded-lg p-2 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-    <p class="mb-6 text-gray-400">
-      Premium fashion collections delivered right to your doorstep. Style meets comfort.
-    </p>
+        <!-- Scrollable Cart Item Feed -->
+        <div class="flex-1 overflow-y-auto px-6 py-4 space-y-4 divide-y divide-white/5">
+          
+          <!-- Sample Cart Item 1 -->
+          <div class="flex items-center gap-4 pt-4 first:pt-0">
+            <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+              <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=150" alt="Product" class="h-full w-full object-cover">
+            </div>
+            <div class="flex flex-1 flex-col">
+              <div class="flex justify-between text-base font-semibold">
+                <h3 class="line-clamp-1 text-gray-200">Oversized Premium Hoodie</h3>
+                <p class="ml-4 text-cyan-400 font-medium">Rs 4,500</p>
+              </div>
+              <p class="mt-0.5 text-xs text-gray-400">Size: XL • Charcoal</p>
+              <div class="flex flex-1 items-end justify-between text-sm mt-2">
+                <!-- Quantity Changer -->
+                <div class="flex items-center border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                  <button class="px-2.5 py-1 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">-</button>
+                  <span class="px-2 text-white text-xs font-medium">1</span>
+                  <button class="px-2.5 py-1 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">+</button>
+                </div>
+                <button type="button" class="font-medium text-red-400 hover:text-red-300 transition text-xs cursor-pointer">Remove</button>
+              </div>
+            </div>
+          </div>
 
-    <div class="flex justify-center gap-6 mb-6">
-      <a href="#" class="hover:text-cyan-400 transition">Home</a>
-      <a href="#" class="hover:text-cyan-400 transition">Shop</a>
-      <a href="#" class="hover:text-cyan-400 transition">About</a>
-      <a href="#" class="hover:text-cyan-400 transition">Contact</a>
+          <!-- Sample Cart Item 2 -->
+          <div class="flex items-center gap-4 pt-4">
+            <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+              <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=150" alt="Product" class="h-full w-full object-cover">
+            </div>
+            <div class="flex flex-1 flex-col">
+              <div class="flex justify-between text-base font-semibold">
+                <h3 class="line-clamp-1 text-gray-200">Designer Linen Shirt</h3>
+                <p class="ml-4 text-cyan-400 font-medium">Rs 3,200</p>
+              </div>
+              <p class="mt-0.5 text-xs text-gray-400">Size: M • Sage Green</p>
+              <div class="flex flex-1 items-end justify-between text-sm mt-2">
+                <div class="flex items-center border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                  <button class="px-2.5 py-1 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">-</button>
+                  <span class="px-2 text-white text-xs font-medium">1</span>
+                  <button class="px-2.5 py-1 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer">+</button>
+                </div>
+                <button type="button" class="font-medium text-red-400 hover:text-red-300 transition text-xs cursor-pointer">Remove</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sticky Footer Breakdown -->
+        <div class="border-t border-white/10 bg-white/5 px-6 py-6 space-y-4">
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm text-gray-300">
+              <p>Subtotal</p>
+              <p>Rs 7,700</p>
+            </div>
+            <div class="flex justify-between text-sm text-gray-300">
+              <p>Shipping</p>
+              <p class="text-emerald-400 font-medium tracking-wide">FREE</p>
+            </div>
+            <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-white/10">
+              <p>Total amount</p>
+              <p class="text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text">Rs 7,700</p>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button class="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 py-3.5 text-center text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 hover:opacity-95 transition active:scale-[0.98] cursor-pointer">
+              Proceed to Checkout
+            </button>
+            <p class="mt-3 text-center text-xs text-gray-400">
+              or <button id="keepShopping" class="font-medium text-cyan-400 hover:underline cursor-pointer">Continue Shopping</button>
+            </p>
+          </div>
+        </div>
+
+      </div>
     </div>
-
-    <p class="text-gray-500 text-sm">
-      &copy; 2026 Outfit Store. All rights reserved.
-    </p>
-
   </div>
-</footer>
-<button>add to Card</button>
+
+  <!-- FOOTER -->
+  <footer class="bg-white/5 backdrop-blur-2xl border-t border-white/10 mt-20">
+    <div class="max-w-7xl mx-auto px-6 py-12 text-center text-gray-300">
+      <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+        Outfit Store
+      </h3>
+      <p class="mb-6 text-gray-400 max-w-md mx-auto">
+        Premium fashion collections delivered right to your doorstep. Style meets comfort.
+      </p>
+      <div class="flex justify-center gap-6 mb-6">
+        <a href="#" class="hover:text-cyan-400 transition">Home</a>
+        <a href="#" class="hover:text-cyan-400 transition">Shop</a>
+        <a href="#" class="hover:text-cyan-400 transition">About</a>
+        <a href="#" class="hover:text-cyan-400 transition">Contact</a>
+      </div>
+      <p class="text-gray-500 text-sm">
+        &copy; 2026 Outfit Store. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Drawer Event Script Wireup -->
+  <script>
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    const panel = document.getElementById('cartPanel');
+    
+    const openBtn = document.getElementById('openCart');
+    const closeBtn = document.getElementById('closeCart');
+    const continueBtn = document.getElementById('keepShopping');
+
+    function toggleDrawer(isOpen) {
+      if (isOpen) {
+        drawer.classList.remove('invisible');
+        setTimeout(() => {
+          overlay.classList.replace('bg-slate-950/0', 'bg-slate-950/60');
+          overlay.classList.replace('backdrop-blur-none', 'backdrop-blur-sm');
+          panel.classList.replace('translate-x-full', 'translate-x-0');
+        }, 10);
+      } else {
+        overlay.classList.replace('bg-slate-950/60', 'bg-slate-950/0');
+        overlay.classList.replace('backdrop-blur-sm', 'backdrop-blur-none');
+        panel.classList.replace('translate-x-0', 'translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('invisible');
+        }, 300);
+      }
+    }
+
+    openBtn.addEventListener('click', () => toggleDrawer(true));
+    closeBtn.addEventListener('click', () => toggleDrawer(false));
+    overlay.addEventListener('click', () => toggleDrawer(false));
+    continueBtn.addEventListener('click', () => toggleDrawer(false));
+
+    // Navbar Hamburger mobile menu switch logic toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const menuContent = document.getElementById('menuContent');
+    menuToggle.addEventListener('click', () => {
+      menuContent.classList.toggle('hidden');
+    });
+  </script>
 
   <script type="module" src="script.js"></script>
+</body>
 
 </html>
