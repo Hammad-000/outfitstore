@@ -290,21 +290,59 @@ document.addEventListener("DOMContentLoaded", () => {
     const successModal = document.getElementById('successModal');
     const modalCloseBtn = document.getElementById('modalCloseBtn');
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault(); 
+    // form.addEventListener('submit', (e) => {
+    //   e.preventDefault(); 
 
-      const orderDetails = {
-        name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        address: `${document.getElementById('address').value}, ${document.getElementById('city').value}`
-      };
+    //   const orderDetails = {
+    //     name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`,
+    //     email: document.getElementById('email').value,
+    //     phone: document.getElementById('phone').value,
+    //     address: `${document.getElementById('address').value}, ${document.getElementById('city').value}`
+    //   };
 
-      console.log("Order Processed Successfully:", orderDetails);
+    //   console.log("Order Processed Successfully:", orderDetails);
 
-      successModal.classList.remove('hidden');
-    });
+    //   successModal.classList.remove('hidden');
+    // });
 
-    modalCloseBtn.addEventListener('click', () => {
-      window.location.href = "index.html";
+    // modalCloseBtn.addEventListener('click', () => {
+    //   window.location.href = "index.html";
+    // });
+
+    
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    const panel = document.getElementById('cartPanel');
+
+    const openBtn = document.getElementById('openCart');
+    const closeBtn = document.getElementById('closeCart');
+    const continueBtn = document.getElementById('keepShopping');
+
+    function toggleDrawer(isOpen) {
+      if (isOpen) {
+        drawer.classList.remove('invisible');
+        setTimeout(() => {
+          overlay.classList.replace('bg-slate-950/0', 'bg-slate-950/60');
+          overlay.classList.replace('backdrop-blur-none', 'backdrop-blur-sm');
+          panel.classList.replace('translate-x-full', 'translate-x-0');
+        }, 10);
+      } else {
+        overlay.classList.replace('bg-slate-950/60', 'bg-slate-950/0');
+        overlay.classList.replace('backdrop-blur-sm', 'backdrop-blur-none');
+        panel.classList.replace('translate-x-0', 'translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('invisible');
+        }, 300);
+      }
+    }
+
+    openBtn.addEventListener('click', () => toggleDrawer(true));
+    closeBtn.addEventListener('click', () => toggleDrawer(false));
+    overlay.addEventListener('click', () => toggleDrawer(false));
+    continueBtn.addEventListener('click', () => toggleDrawer(false));
+
+    const menuToggle = document.getElementById('menuToggle');
+    const menuContent = document.getElementById('menuContent');
+    menuToggle.addEventListener('click', () => {
+      menuContent.classList.toggle('hidden');
     });
