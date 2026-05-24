@@ -17,7 +17,6 @@ const page2Btn = document.querySelector(".btn-3");
 const page3Btn = document.querySelector(".btn-4");
 const nextBtn = document.querySelector(".btn-next");
 
-// CART STATE ELEMENTS
 const cartCountBadge = document.getElementById("cartCountBadge");
 const cartItemsFeed = document.querySelector("#cartDrawer .overflow-y-auto");
 const subtotalEl = document.querySelector("#cartDrawer .text-slate-300 + p"); // Targets subtotal value
@@ -29,16 +28,13 @@ let filteredProducts = [...items];
 const cardsPerPage = 4;
 let currentPage = 1;
 
-// --- CART INTERACTION LOGIC ---
 
 function addToCart(product) {
-  // Check if item already exists in cart
   const existingItem = cart.find(item => item.id === product.id);
 
   if (existingItem) {
     existingItem.quantity += 1;
   } else {
-    // Push copy of product with a starting quantity of 1
     cart.push({ ...product, quantity: 1 });
   }
 
@@ -51,7 +47,6 @@ function updateQuantity(productId, amount) {
 
   cartItem.quantity += amount;
 
-  // If quantity drops to 0 or below, remove it entirely
   if (cartItem.quantity <= 0) {
     cart = cart.filter(item => item.id !== productId);
   }
@@ -65,14 +60,11 @@ function removeFromCart(productId) {
 }
 
 function updateCartUI() {
-  // 1. Calculate Total Items Count
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   
-  // 2. Update Badge Counters
   if (cartCountBadge) cartCountBadge.textContent = totalItems;
   if (drawerHeaderBadge) drawerHeaderBadge.textContent = `${totalItems} Item${totalItems === 1 ? '' : 's'}`;
 
-  // 3. Calculate Financial Totals
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   if (subtotalEl) subtotalEl.textContent = `Rs ${subtotal.toLocaleString()}`;
@@ -120,8 +112,6 @@ function updateCartUI() {
         </div>
       </div>
     `;
-
-    // Hook listeners directly to row buttons
     itemRow.querySelector(".minus-qty").addEventListener("click", () => updateQuantity(item.id, -1));
     itemRow.querySelector(".plus-qty").addEventListener("click", () => updateQuantity(item.id, 1));
     itemRow.querySelector(".remove-item").addEventListener("click", () => removeFromCart(item.id));
@@ -130,7 +120,6 @@ function updateCartUI() {
   });
 }
 
-// --- DISPLAY & COMPONENT GENERATOR ---
 
 function renderCards(productList) {
   cardsContainer.innerHTML = "";
@@ -147,7 +136,6 @@ function renderCards(productList) {
   productList.forEach(product => {
     const card = document.createElement("div");
     
-    // Matched card setup styles with your updated background setup layout
     card.className = "group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md";
 
     card.innerHTML = `
@@ -192,10 +180,8 @@ function renderCards(productList) {
         </div>
       </div>
     `;
-
-    // Target button inside this specific node block and pass the context data structure object
     card.querySelector(".add-to-cart-btn").addEventListener("click", (e) => {
-      e.stopPropagation(); // Prevents clicking the card container itself if you add route views later
+      e.stopPropagation(); 
       addToCart(product);
     });
 
@@ -260,7 +246,6 @@ function applyFilters() {
   displayProducts();
 }
 
-// --- CONTROLLERS & EVENT ATTACHMENTS ---
 
 prevBtn.addEventListener("click", () => {
   if (currentPage > 1) {
@@ -283,7 +268,7 @@ page3Btn.addEventListener("click", () => { currentPage = 3; displayProducts(); }
 
 document.addEventListener("DOMContentLoaded", () => {
   displayProducts();
-  updateCartUI(); // Initial layout reset state setup
+  updateCartUI(); 
 
   categoryCheckboxes.forEach(cb =>
     cb.addEventListener("change", applyFilters)
@@ -300,3 +285,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+    const form = document.getElementById('checkoutForm');
+    const successModal = document.getElementById('successModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); 
+
+      const orderDetails = {
+        name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: `${document.getElementById('address').value}, ${document.getElementById('city').value}`
+      };
+
+      console.log("Order Processed Successfully:", orderDetails);
+
+      successModal.classList.remove('hidden');
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+      window.location.href = "index.html";
+    });
