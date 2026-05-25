@@ -241,7 +241,7 @@
 
           <div class="pt-2">
             <button
-              class="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 py-3.5 text-center text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 hover:opacity-95 transition active:scale-[0.98] cursor-pointer">
+              class="w-full rounded-xl   py-3.5 text-center text-sm font-semibold text-slate-950 hover:opacity-95 transition active:scale-[0.98] cursor-pointer">
               <a href="checkout.html"
                 class="w-full inline-block text-center bg-cyan-500 text-slate-950 font-bold py-3 rounded-xl">
                 Proceed to Checkout
@@ -279,42 +279,6 @@
   </footer>
 
   <script>
-    const drawer = document.getElementById('cartDrawer');
-    const overlay = document.getElementById('cartOverlay');
-    const panel = document.getElementById('cartPanel');
-
-    const openBtn = document.getElementById('openCart');
-    const closeBtn = document.getElementById('closeCart');
-    const continueBtn = document.getElementById('keepShopping');
-
-    function toggleDrawer(isOpen) {
-      if (isOpen) {
-        drawer.classList.remove('invisible');
-        setTimeout(() => {
-          overlay.classList.replace('bg-slate-950/0', 'bg-slate-950/60');
-          overlay.classList.replace('backdrop-blur-none', 'backdrop-blur-sm');
-          panel.classList.replace('translate-x-full', 'translate-x-0');
-        }, 10);
-      } else {
-        overlay.classList.replace('bg-slate-950/60', 'bg-slate-950/0');
-        overlay.classList.replace('backdrop-blur-sm', 'backdrop-blur-none');
-        panel.classList.replace('translate-x-0', 'translate-x-full');
-        setTimeout(() => {
-          drawer.classList.add('invisible');
-        }, 300);
-      }
-    }
-
-    openBtn.addEventListener('click', () => toggleDrawer(true));
-    closeBtn.addEventListener('click', () => toggleDrawer(false));
-    overlay.addEventListener('click', () => toggleDrawer(false));
-    continueBtn.addEventListener('click', () => toggleDrawer(false));
-
-    const menuToggle = document.getElementById('menuToggle');
-    const menuContent = document.getElementById('menuContent');
-    menuToggle.addEventListener('click', () => {
-      menuContent.classList.toggle('hidden');
-    });
   </script>
 
   <script type="module" src="script.js"></script>
