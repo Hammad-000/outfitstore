@@ -289,27 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('checkoutForm');
     const successModal = document.getElementById('successModal');
     const modalCloseBtn = document.getElementById('modalCloseBtn');
-
-    // form.addEventListener('submit', (e) => {
-    //   e.preventDefault(); 
-
-    //   const orderDetails = {
-    //     name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`,
-    //     email: document.getElementById('email').value,
-    //     phone: document.getElementById('phone').value,
-    //     address: `${document.getElementById('address').value}, ${document.getElementById('city').value}`
-    //   };
-
-    //   console.log("Order Processed Successfully:", orderDetails);
-
-    //   successModal.classList.remove('hidden');
-    // });
-
-    // modalCloseBtn.addEventListener('click', () => {
-    //   window.location.href = "index.html";
-    // });
-
-    
+        
     const drawer = document.getElementById('cartDrawer');
     const overlay = document.getElementById('cartOverlay');
     const panel = document.getElementById('cartPanel');
@@ -346,3 +326,23 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener('click', () => {
       menuContent.classList.toggle('hidden');
     });
+
+    // form.addEventListener('submit', (e) => {
+    //   e.preventDefault(); 
+
+    //   const orderDetails = {
+    //     name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`,
+    //     email: document.getElementById('email').value,
+    //     phone: document.getElementById('phone').value,
+    //     address: `${document.getElementById('address').value}, ${document.getElementById('city').value}`
+    //   };
+
+    //   console.log("Order Processed Successfully:", orderDetails);
+
+    //   successModal.classList.remove('hidden');
+    // });
+
+    // modalCloseBtn.addEventListener('click', () => {
+    //   window.location.href = "index.html";
+    // });
+
